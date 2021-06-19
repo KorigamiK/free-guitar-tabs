@@ -3,20 +3,22 @@ import asyncio
 from os import listdir, getcwd
 from os.path import join, isfile
 from typing import List
-from re import search, sub, IGNORECASE, compile
+from re import search, sub, IGNORECASE
 
 """
 Run this first ->
-youtube-dl --skip-download --write-description https://www.youtube.com/channel/UCWP9fMCl9TkkMfCcLLFmHHw/videos
+youtube-dl --skip-download --write-description https://www.youtube.com/channel/UCI8C1y5Ivt5yzxwsHpTL1gw/videos
 """
 
 
 def get_files(mypath: str) -> List[str]:
-    return [f for f in listdir(mypath) if isfile(join(mypath, f)) and "description" in f]
+    return [
+        f for f in listdir(mypath) if isfile(join(mypath, f)) and "description" in f
+    ]
 
 
 identity = 0
-backlist_pattern = compile('instagram|facebook|twitter|youtube|subscri|alphaco|wallpaper|source', flags=IGNORECASE)
+
 
 def generate_id():
     global identity
@@ -34,7 +36,7 @@ async def reader(file_name: str, identity) -> None:
         ).strip()
         flag = True
         async for line in f:
-            if 'http' in line and backlist_pattern.search(line) is None:
+            if "http" in line and "soundcloud" not in line:
                 print(f"{identity}. [{name}] ", line.strip())
                 flag = False
         if flag:
