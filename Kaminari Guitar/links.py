@@ -18,16 +18,19 @@ class kaminari:
             get_link = lambda x: x.get("href")
             return map(get_link, page.select('h5 > a[data-type="works"]'))
         except RuntimeError:
-            print("runtime error")
+            print("Runtime error")
 
     async def get_download_link(self, tabulature_url):
         kaminari.index += 1
         idx = kaminari.index
         # print(f'starting {idx}')
         page = await self.request.get(tabulature_url)
-        title = page.select_one('.titles > a').get_text(' ')
-        ret = page.select_one('[target="_blank"]').get("href")
-        print(f'{idx: 04}. [{title}]({ret})')
+        try:
+            title = page.select_one('.titles > a').get_text(' ')
+            ret = page.select_one('[target="_blank"]').get("href")
+            print(f'{idx: 04}. [{title}]({ret})')
+        except Exception as e:
+            print(f'Exception {e} on {tabulature_url}')
         # return ret
 
     async def get_all_pages(self):
