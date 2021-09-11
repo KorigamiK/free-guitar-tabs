@@ -3,7 +3,7 @@ from scraper import scraper
 from aiohttp import ClientSession
 from asyncio import run
 
-LAST_PAGE = 2
+LAST_PAGE = 127
 
 class kaminari:
     page_template = "https://music.kaminari.info/page/{}/"
