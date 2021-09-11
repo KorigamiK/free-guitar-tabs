@@ -7,6 +7,14 @@ from asyncio import run
 
 LAST_PAGE = 127
 
+def divider(total, part_size):
+    s = 1
+    for _ in range(total//part_size):
+        e = s + part_size - 1
+        yield s, e
+        s += part_size
+    yield total - (total % part_size) + 1, total
+
 async def gather_limitter(*args: coroutine, max=5):
     start = 0
     while start<len(args):        
@@ -24,12 +32,16 @@ class kaminari:
         self.request = request
 
     async def _get_from_page(self, link):
+        await asyncio.sleep(1)
         try:
             page = await self.request.get(link)
             get_link = lambda x: x.get("href")
             return map(get_link, page.select('h5 > a[data-type="works"]'))
         except RuntimeError:
             print("Runtime error")
+
+        except Exception as e:
+            print(f'Exception {e} on {link}')
 
     async def get_download_link(self, tabulature_url):
         kaminari.index += 1
@@ -45,15 +57,19 @@ class kaminari:
         # return ret
 
     async def get_all_pages(self):
-        for links in asyncio.as_completed(
-            [
-                self._get_from_page(kaminari.page_template.format(number))
-                for number in range(1, LAST_PAGE+1)
-            ]
-        ):
-            links = await links
-            for link in links:
-                yield link
+        def get_list_from_range(start, end):
+            return [
+                    self._get_from_page(kaminari.page_template.format(number))
+                    for number in range(start, end)
+                ]
+
+        for start, end in divider(LAST_PAGE, 3): # change this
+            for links in asyncio.as_completed(get_list_from_range(start, end+1)):
+                links = await links
+                for link in links:
+                    yield link
+            await asyncio.sleep(5)
+            start = end
 
 
     async def get_all_links(self):

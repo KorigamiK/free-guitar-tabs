@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: |
         cd Kaminari\ Guitar/
-        python links.py
+        sleep 30
         python links.py | sort > links.md
         cd ..
 
