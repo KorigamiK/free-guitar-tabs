@@ -1,9 +1,20 @@
 import asyncio
+
+from asyncio.coroutines import coroutine
 from scraper import scraper
 from aiohttp import ClientSession
 from asyncio import run
 
 LAST_PAGE = 127
+
+async def gather_limitter(*args: coroutine, max=5):
+    start = 0
+    while start<len(args):        
+        iterable_range = range(start, start + max) if len(args) >= start+max else range(start, len(args))
+        tasks = [args[i] for i in iterable_range]
+        await asyncio.gather(*tasks, return_exceptions=True)
+        print(f'Completed {len(tasks) + start} of {len(args)} tasks \n')
+        start += max
 
 class kaminari:
     page_template = "https://music.kaminari.info/page/{}/"
@@ -24,8 +35,8 @@ class kaminari:
         kaminari.index += 1
         idx = kaminari.index
         # print(f'starting {idx}')
-        page = await self.request.get(tabulature_url)
         try:
+            page = await self.request.get(tabulature_url)
             title = page.select_one('.titles > a').text
             ret = page.select_one('[target="_blank"]').get("href")
             print(f'{idx: 04}. [{title}]({ret})')
@@ -49,7 +60,7 @@ class kaminari:
         async for tabulature in self.get_all_pages():
             tasks.append(self.get_download_link(tabulature))
 
-        await asyncio.gather(*tasks)
+        await gather_limitter(*tasks, max=25)
         # print(result)
 
 
