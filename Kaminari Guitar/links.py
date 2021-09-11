@@ -3,7 +3,7 @@ from scraper import scraper
 from aiohttp import ClientSession
 from asyncio import run
 
-LAST_PAGE = 127
+LAST_PAGE = 2
 
 class kaminari:
     page_template = "https://music.kaminari.info/page/{}/"
@@ -26,7 +26,7 @@ class kaminari:
         # print(f'starting {idx}')
         page = await self.request.get(tabulature_url)
         try:
-            title = page.select_one('.titles > a').get_text(' ')
+            title = page.select_one('.titles > a').text
             ret = page.select_one('[target="_blank"]').get("href")
             print(f'{idx: 04}. [{title}]({ret})')
         except Exception as e:
