@@ -55,12 +55,20 @@ class kaminari:
             for link in links:
                 yield link
 
+
     async def get_all_links(self):
         tasks = []
         async for tabulature in self.get_all_pages():
-            tasks.append(self.get_download_link(tabulature))
+            if len(tasks) <= 20:
+                tasks.append(self.get_download_link(tabulature))
+            else:
+                await asyncio.gather(*tasks)
+                await asyncio.sleep(3)
+                tasks = []
 
-        await gather_limitter(*tasks, max=25)
+        await asyncio.gather(*tasks)
+
+        # await gather_limitter(*tasks, max=20)
         # print(result)
 
 
