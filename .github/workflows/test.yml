@@ -31,6 +31,19 @@ jobs:
     - name: Test
       run: |
         cd Kaminari\ Guitar/
-        python links.py
+        python links.py | sort > links.md
+        cd ..
 
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        # Optional but recommended
+        # Defaults to "Apply automatic changes"
+        commit_message: Apply Test
+
+        # Optional local file path to the repository
+        # Defaults to the root of the repository
+        repository: .
+
+        # Optional: Skip internal call to `git fetch`
+        skip_fetch: true
 

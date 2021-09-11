@@ -3,6 +3,7 @@ from scraper import scraper
 from aiohttp import ClientSession
 from asyncio import run
 
+LAST_PAGE = 127
 
 class kaminari:
     page_template = "https://music.kaminari.info/page/{}/"
@@ -24,15 +25,16 @@ class kaminari:
         idx = kaminari.index
         # print(f'starting {idx}')
         page = await self.request.get(tabulature_url)
+        title = page.select_one('.titles > a').get_text(' ')
         ret = page.select_one('[target="_blank"]').get("href")
-        print(f'{idx: 03}. {ret}')
+        print(f'{idx: 04}. [{title}]({ret})')
         # return ret
 
     async def get_all_pages(self):
         for links in asyncio.as_completed(
             [
                 self._get_from_page(kaminari.page_template.format(number))
-                for number in range(1, 3)
+                for number in range(1, LAST_PAGE+1)
             ]
         ):
             links = await links
