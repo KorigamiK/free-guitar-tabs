@@ -38,7 +38,7 @@ jobs:
       with:
         # Optional but recommended
         # Defaults to "Apply automatic changes"
-        commit_message: Apply Test
+        commit_message: Apply Test For Kaminari Guitar
 
         # Optional local file path to the repository
         # Defaults to the root of the repository
