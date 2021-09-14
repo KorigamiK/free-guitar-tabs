@@ -1,0 +1,34 @@
+10. [Karakai Jouzu no Takagi-san Season 1 ED - AM11 (HY) -]: No links available
+11. [A walk on a rainbow (Nintendo puzzle collection - Panel de Pon ED) -](https://drive.google.com/file/d/1BYcydRkKbadeM-lpx5lFHWyk-Hjhcpx6/view?usp=sharing)
+12. [Have you ever seen the rain (Creedence Clearwater Revival) -](https://drive.google.com/file/d/1piv2-VP_sP_gPC5YAW7PnjzV_oJh_5q8/view?usp=sharing)
+13. [Uru - Prologue (プロローグ) -]: No links available
+14. [Paper Mario (マリオストーリー) - Princess in Distress -](https://drive.google.com/file/d/1dN5kpfm_T_SRS3SIYKkziAeU8PWVSA2J/view?usp=sharing)
+15. [Violet Evergarden ED - Michishirube (みちしるべ) -](https://drive.google.com/file/d/1eWSD0aVBahq8TqQCAOgmzLbFq-Fcw2RX/view?usp=sharing)
+16. [E se o RESTART fosse tocado no estilo](https://drive.google.com/file/d/17QFch1wWyctqgc4LSIkYPo6Xy3UvGXXP/view?usp=sharing)
+17. [A 3 sec theme song that if you know, you know!-Alr8tB10GMs]: No links available
+18. [Shock (衝撃) - Attack on Titan Season 4 ED -](https://drive.google.com/file/d/1EfIzbGQYB_SX_ITYGFNOR9sxLO3WXPUp/view?usp=sharing)
+19. [Ed Sheeran - Photograph -](https://drive.google.com/file/d/1GaKR59OT3IAR2-Kd3Ok8SWSaq3sf8xT3/view?usp=sharing)
+1. [inside you_milet - スキャンダル専門弁護士 QUEEN OP -](https://drive.google.com/file/d/1Fx6eep1lXfAkyjavO0zjgLW78RXB-vSH/view?usp=sharing)
+20. [マリオストーリー (Hang in there, Peach! - ピーチ城の捜索開始) -]: No links available
+21. [Koi wa Ameagari no You ni (恋は雨上がりのように) ED - Ref -rain_Aimer -](https://drive.google.com/file/d/1gzXkczB0kTmksWneCdWtmhBhJjBlLDcH/view?usp=sharing)
+22. [茜さす(Akane sasu)_Aimer - Natsume Yuujinchou ED 5 -](https://drive.google.com/file/d/1P9_I03RXAL89znVV8KxdhVNyVQBTMu2B/view?usp=sharing)
+23. [Confession (Trails in the Sky FC [Sora no Kiseki](https://drive.google.com/file/d/1kCGBnRshxPMEM8hWjamQQNTaLYrYhADY/view?usp=sharing)
+24. [Toaru Kagaku no Railgun OST - Kiyama Sensei (Miss Kiyama) -]: No links available
+25. [Crescent (Sungha Jung OG Sketch #3) -](https://drive.google.com/file/d/12MAyxqbYMhLj-uugMvxBWU7badpgr-fA/view?usp=sharing)
+26. [Resident Evil 0 - Save Room Theme -](https://drive.google.com/file/d/1dS6rgOKLwAxofyiDI8ZoOVhXoFVOhYy6/view?usp=sharing)
+27. [Resident Evil Remake Save Room Theme -](https://drive.google.com/file/d/1DejRlyNiSWlHHgwCHKTID1TZoJyQEul7/view?usp=sharing)
+28. [Teru no Uta (テルーの唄_Tales From Earthsea) -]: No links available
+29. [Sword Art Online - At Nightfall -](https://drive.google.com/file/d/1ydydyxkORgs3YRYRSZJoLpT35wd2ux5u/view?usp=sharing)
+2. [Afternoon (Sungha Jung OG Sketch #2) -]: No links available
+30. [Zelda`s lullaby (ゼルダの子守歌) -](https://drive.google.com/file/d/1VAV_Xcszc30aP934npeN3MLXn66xBHdk/view?usp=sharing)
+31. [The Pretty Reckless - You -]: No links available
+32. [Happy Sugar Life ED - Sweet Hurt -](https://drive.google.com/file/d/1GQttPq9VcXE8l4DxWBMtoCBqGZx9878S/view?usp=sharing)
+33. [Your name (Kimi no Na Wa) - Mitsuha's theme (三葉のテーマ) -](https://drive.google.com/file/d/1iUmTLrnqZRctFKMwwDc7i-BI2J0xhb0b/view?usp=sharing)
+34. [Weathering With You (天気の子) OST - Hina, Fading Away -](https://drive.google.com/file/d/1q8fubPgHdmVa1xVzPf5SUPCKLCIoOnVy/view?usp=sharing)
+3. [Your name (Kimi no Na Wa_君の名は) - Katawaredoki_かたわれ時 -](https://drive.google.com/file/d/12lJSI8HFvGYXyREKZIJ0wRSi69YAAReX/view?usp=sharing)
+4. [Sword Art Online ED 2 (Overfly - Luna Haruna) -]: No links available
+5. [How you SHOULDN'T play Buried Alive - Avenged Sevenfold-3i2ouX8yQF8]: No links available
+6. [A moment of relief (Resident Evil - Code Veronica) -](https://drive.google.com/file/d/1kcMb5vd1Ecamct9Knrkjj2d1PI79I5bj/view?usp=sharing)
+7. [ふたり、同じ景色 ~ 晶のテーマ - 中学聖日記 (Chugakusei Nikki) -]: No links available
+8. [Another (アナザー) ED - Anamnesis -](https://drive.google.com/file/d/1f_7E7Ncv6LclXV1D8-6TmkB6J8tYNBKP/view?usp=sharing)
+9. [Waltz (Sungha Jung OG Sketch #1) -]: No links available
