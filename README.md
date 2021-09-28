@@ -1,4 +1,6 @@
-# Free-guitar-tabs-downloader
+# Free Guitar Tabs
+
+![logo](./.assets/tabs_logo.jpg)
 
 ### This is a tool to download guitar tabs from various artists having various songs. 
 
