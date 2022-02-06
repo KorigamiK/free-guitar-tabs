@@ -8,6 +8,7 @@ from re import search, sub, IGNORECASE, compile
 """
 Run this first ->
 youtube-dl --skip-download --write-description ...
+python ./links.py | sort > readme.md
 """
 
 
@@ -16,14 +17,14 @@ def get_files(mypath: str) -> List[str]:
 
 
 identity = 0
-backlist_pattern = compile('instagram|facebook|twitter|youtube|subscri|alphaco|wallpaper|source', flags=IGNORECASE)
+backlist_pattern = compile('instagram|facebook|twitter|youtube|subscri|alphaco|wallpaper|source|youtu\.be', flags=IGNORECASE)
 
 def generate_id():
     global identity
     identity += 1
     return f'{identity:02d}'
 
-video_title_pattern = compile(r"(\({0,1}\([Gg]uit.+)|(\({0,1}[Ss]olo.+)|(\({0,1}[Ff]ingerst.+)|(\[TABS\])", flags=IGNORECASE)
+video_title_pattern = compile(r"(\({0,1}\([Gg]uit.+)|(\({0,1}[Ss]olo.+)|(\({0,1}[Ff]ingerst.+)|(\[TAB(S){0,1}\].+)", flags=IGNORECASE)
 
 async def reader(file_name: str, identity) -> None:
     async with aiofiles.open(file_name, mode="r") as f:
