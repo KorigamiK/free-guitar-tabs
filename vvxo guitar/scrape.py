@@ -2,6 +2,7 @@
 
 from asyncio import gather
 from re import IGNORECASE, compile as compileREGEX
+from sys import argv
 from requests import Response
 from requests_html import AsyncHTMLSession
 from bs4 import BeautifulSoup as bs
@@ -26,6 +27,11 @@ async def main():
         # break
 
     posts = await gather(*posts_tasks)
+    write = 'write' in argv
+
+    if write:
+        links_file = open('./links.txt', 'w+')
+        readme_file = open('./readme.md', 'w+')
 
     for idx, (title, link) in enumerate(
         result
@@ -34,7 +40,16 @@ async def main():
         if None not in post
         if None not in result
     ):
+
         print(f"{idx+1:03}. [{title}]({link})")
+
+        if write:
+            links_file.write(link + '\n')
+            readme_file.write(f"{idx+1:03}. [{title}]({link})\n")
+
+    if write:
+        links_file.close()
+        readme_file.close()
 
 
 async def parse_posts(url: str):
@@ -57,9 +72,10 @@ async def parse_post(url: str):
     title = soup.select_one('h1.entry-title').text
     title = title_pattern.sub("", title.strip()).strip().removesuffix('-')
 
-    for link in soup.select('div.entry-content > p > a'):
+    for link in soup.select('div.entry-content a'):
         if link_pattern.search(link.attrs.get('href')):
             return title, link.attrs.get('href')
+    return None
 
 
 asession.run(main)
