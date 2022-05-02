@@ -9,7 +9,7 @@ from re import IGNORECASE, compile
 
 ''''
 Run this first ->
-../write_descriptions.sh https://www.youtube.com/c/RafiHaen/videos
+../write_descriptions.sh https://www.youtube.com/channel/UCj6Oy7IqNuy2WeXUMoAYNWg/videos
 '''
 
 
@@ -34,7 +34,7 @@ def generate_id():
 
 
 video_title_pattern = compile(
-    r"(\({0,1}\([Gg]uit.+)|(\({0,1}[Ss]olo.+)|(\({0,1}[Ff]ingerst.+)|(【TAB】.+)|(\[TABS\])",
+    r"(\(?\([Gg]uit.+)|(\(?[Ss]olo.+)|(\(?[Ff]ingerst.+)|(【TAB】.+)|(\[?TABS?\]?)|(\[?\({0,1}Acoustic.+)|(\[TURORIAL\])|(\[?Guitar.+)",
     flags=IGNORECASE,
 )
 
@@ -42,16 +42,27 @@ video_title_pattern = compile(
 async def reader(file_name: str, identity) -> None:
     async with aiofiles.open(file_name, mode="r") as f:
         name = file_name.replace(".description", "")
-        name = video_title_pattern.sub("", name).strip()
+        name = video_title_pattern.sub("", name).strip().removesuffix('+')
         flag = True
+        download_links = []
         async for line in f:
             if 'http' in line and backlist_pattern.search(line) is None:
-                print(
-                    f"{identity}. [{name}]({tab_pattern.sub('', line.strip()).strip()})"
-                )
+                if line.startswith('PDF:'):
+                    line = line.strip().replace('PDF:', '[PDF](') + ')'
+                    download_links.append(line)
+                elif line.startswith('GPX:'):
+                    line = line.strip().replace('GPX:', '[GPX](') + ')'
+                    download_links.append(line)
+                else:
+                    download_links.append(line.strip())
                 flag = False
+
         if flag:
             print(f"{identity}. {name}: No links available")
+        else:
+            print(f"{identity}. {name}")
+            for link in download_links:
+                print(f"\t- {link}")
 
 
 async def parser(file_names: List[str]):
