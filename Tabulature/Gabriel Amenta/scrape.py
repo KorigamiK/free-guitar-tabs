@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 from enum import Enum
+from posixpath import dirname
+import sys
 import aiofiles
 import asyncio
 from os import listdir, getcwd
@@ -8,8 +10,9 @@ from os.path import join, isfile
 from typing import List
 from re import IGNORECASE, compile
 
-print(__package__)
-from ..create_crawljob import Data
+sys.path.append(dirname(dirname(dirname(__file__))))
+
+from Tabulature.create_crawljob import CrawlJob, Data, write_crawljob
 
 ''''
 Run this first ->
@@ -56,9 +59,9 @@ def getType(line: str) -> LinkType | None:
     return None
 
 
-async def reader(file_name: str, identity: str) -> None:
+async def reader(file_name: str, identity: str) -> list[Data]:
 
-    links: List[Data] = []
+    link: list[Data] = []
 
     async with aiofiles.open(file_name, mode="r") as f:
         name = file_name.replace(".description", "")
@@ -68,18 +71,21 @@ async def reader(file_name: str, identity: str) -> None:
 
         async for line in f:
 
-            link_type = getType(line)
+            if link_type is None:
+                link_type = getType(line)
 
             if (
                 link_type is not None
                 and 'http' in line
-                and backlist_pattern.match(line) is None
+                and backlist_pattern.search(line) is None
             ):
-                link = tab_pattern.sub('', line.strip()).strip()
-                links.append(
+                url = tab_pattern.sub('', line.strip()).strip()
+
+                link.append(
                     {
-                        'link': link,
-                        'filename': name,
+                        'link': url,
+                        'filename': name.strip()
+                        + ('.pdf' if link_type.value == LinkType.tab.value else '.rar'),
                         'identity': identity,
                         'category': link_type.name,
                     }
@@ -90,10 +96,16 @@ async def reader(file_name: str, identity: str) -> None:
         if flag:
             print(f"{identity}. {name}: No links available")
 
+    return link
+
 
 async def parser(file_names: List[str]):
     tasks = [reader(file_name, generate_id()) for file_name in file_names]
-    await asyncio.gather(*tasks)
+    results = await asyncio.gather(*tasks)
+
+    links = [data for result in results for data in result]
+
+    write_crawljob(links)
 
 
 asyncio.run(parser(get_files(getcwd())))

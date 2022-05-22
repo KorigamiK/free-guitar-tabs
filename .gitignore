@@ -2,3 +2,5 @@
 *.description
 *.pyc
 *.gp*
+__pycache__
+*.rar
