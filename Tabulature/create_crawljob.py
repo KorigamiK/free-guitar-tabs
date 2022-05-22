@@ -61,3 +61,13 @@ def write_crawljob(links: List[Data]) -> bool:
         dump(jobs, file)
 
     return True
+
+def write_readme(links: List[Data]) -> None:
+    with open('./Readme.md', 'w') as file:
+        for data in links:
+            if data.get('category'):
+                file.write(f"{data['identity']}. {data['filename']}\n")
+                file.write(f'\t- [{data["category"]}]({data["link"]})\n')
+                continue
+            file.write(f"{data['identity']}. [{data['filename']}]({data['link']})\n\n")
+        

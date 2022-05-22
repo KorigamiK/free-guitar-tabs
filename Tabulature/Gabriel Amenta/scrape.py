@@ -12,7 +12,7 @@ from re import IGNORECASE, compile
 
 sys.path.append(dirname(dirname(dirname(__file__))))
 
-from Tabulature.create_crawljob import CrawlJob, Data, write_crawljob
+from Tabulature.create_crawljob import CrawlJob, Data, write_crawljob, write_readme
 
 ''''
 Run this first ->
@@ -106,6 +106,7 @@ async def parser(file_names: List[str]):
     links = [data for result in results for data in result]
 
     write_crawljob(links)
+    write_readme(links)
 
 
 asyncio.run(parser(get_files(getcwd())))
