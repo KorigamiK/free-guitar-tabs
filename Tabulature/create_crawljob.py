@@ -10,6 +10,7 @@ class Data(TypedDict):
     link: str
     identity: str
     category: Optional[str]
+    ext: Optional[str]
 
 class CrawlJob(TypedDict):
     '''
@@ -49,6 +50,15 @@ def write_crawljob(links: List[Data]) -> bool:
 
     for data in links:
         match data:
+            case {'filename': filename, 'link': link, 'ext': ext}:
+                jobs.append({
+                    'text': link,
+                    'filename': filename + ext,
+                    'downloadFolder': downloadFolder,
+                    'extractAfterDownload': "FALSE"
+                })
+                continue
+            
             case {'filename': filename, 'link': link}:
                 jobs.append({
                     'text': link,
@@ -56,6 +66,7 @@ def write_crawljob(links: List[Data]) -> bool:
                     'downloadFolder': downloadFolder,
                     'extractAfterDownload': "FALSE"
                 })
+                continue
 
     with open('download.crawljob', 'w') as file:
         dump(jobs, file)
