@@ -81,7 +81,7 @@ async def reader(file_name: str, identity: str) -> list[Data]:
                         'link': url,
                         'filename': name.strip(),
                         'identity': identity,
-                        'ext': '.pdf' if 'imgur' not in url else '.png',
+                        'ext': '.txt' if 'imgur' not in url else '.png',
                     }
                 )
                 flag = False
