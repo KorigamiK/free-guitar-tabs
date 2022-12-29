@@ -37,7 +37,7 @@ async def get_page(url: str):
         for i in target.find_all('a', rel=False):
             ret.add(i.attrs.get('href'))
 
-    return ret, title.strip()
+    return ret, title.strip(), url
 
 
 async def safe_get(i: str):
@@ -49,18 +49,18 @@ async def main():
     body: Response = await asession.get(SITEMAP)
     soup = bs(body.text, 'xml')
 
-    tasks = [safe_get(i.find('loc').text) for i in soup.find_all('url')[:10]]
+    tasks = [safe_get(i.find('loc').text) for i in soup.find_all('url')]
 
     results = await gather(*tasks)
 
     print('# Fingertabs')
-    for links, title in results:
-        print(f'- {title}')
+    for links, title, url in results:
+        print(f'- [{title}]({url})')
         for link in links:
             print(f"\t- [{link.split('.')[-1]}]({link})")
 
     crawl_data = []
-    for links, title in results:
+    for links, title, _url in results:
         data = {
             'link': list(links),
             'filename': title,
