@@ -2,5 +2,6 @@
   "[python]": {
     "editor.wordBasedSuggestions": false,
     "editor.tabSize": 4
-  }
+  },
+  "python.analysis.typeCheckingMode": "basic"
 }

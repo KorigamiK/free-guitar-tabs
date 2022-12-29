@@ -28,7 +28,7 @@ def get_files(mypath: str) -> List[str]:
 
 identity = 0
 backlist_pattern = compile(
-    'instagram|facebook|twitter|youtube|subscri|alphaco|wallpaper|source|youtu\.be',
+    r'instagram|facebook|twitter|youtube|subscri|alphaco|wallpaper|source|youtu\.be',
     flags=IGNORECASE,
 )
 tab_pattern = compile(r'tab[s]{0,1}[:]{0,1}', IGNORECASE)
